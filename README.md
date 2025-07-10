@@ -28,15 +28,15 @@ wget https://your-repo/final_reserv_instance_finder.sh
 curl -O https://your-repo/final_reserv_instance_finder.sh
 
 # Make the script executable
-chmod +x final_reserv_instance_finder.sh
+`chmod +x final_reserv_instance_finder.sh`
 Ensure AWS CLI is installed and configured:
 
 # Install AWS CLI if not already installed
 # For macOS with Homebrew:
-brew install awscli
+`brew install awscli`
 
 # For Linux (Ubuntu/Debian):
-sudo apt-get install awscli
+`sudo apt-get install awscli`
 
 # Configure AWS CLI with your credentials
 aws configure
@@ -46,8 +46,8 @@ Option 1: Using Git Bash or WSL (Recommended)
 If you have Git Bash or Windows Subsystem for Linux (WSL) installed, you can run the script directly:
 
 # In Git Bash or WSL terminal
-chmod +x final_reserv_instance_finder.sh
-./final_reserv_instance_finder.sh
+`chmod +x final_reserv_instance_finder.sh`
+`./final_reserv_instance_finder.sh`
 Option 2: Using Windows Command Prompt with Bash
 
 Install Git for Windows (which includes Git Bash) or use WSL to run bash scripts on Windows.
