@@ -13,49 +13,74 @@ The script presents information in a clear, formatted output with visual indicat
 Before running this script, ensure you have the following requirements met:
 
 **AWS CLI Installation and Configuration:**
+
 - AWS CLI must be installed and configured with appropriate credentials
 - Your AWS credentials should have permissions to describe EC2 instances and Reserved Instances
 - The script currently targets the `us-east-1` region (can be modified as needed)
 
 **Required AWS Permissions:**
+
 - `ec2:DescribeReservedInstances`
 - `ec2:DescribeInstances`
 
 ## Installation and Setup
 
-### For Linux/macOS:
+### Method 1: Clone from GitHub (Recommended)
+
+```bash
+# Clone the repository
+git clone https://github.com/NisaargPendal/Find_Reserved_instances_Mapping.git
+
+# Navigate to the project directory
+cd Find_Reserved_instances_Mapping
+
+# Make the script executable
+chmod +x final_reserv_instance_finder.sh
+```
+
+### Method 2: For Linux/macOS:
 
 Download and prepare the script:
 
-    # Download the script (replace with your actual download method)
-    wget https://your-repo/final_reserv_instance_finder.sh
-    # or
-    curl -O https://your-repo/final_reserv_instance_finder.sh
+```bash
+# Download the script (replace with your actual download method)
+wget https://your-repo/final_reserv_instance_finder.sh
+# or
+curl -O https://your-repo/final_reserv_instance_finder.sh
 
-    # Make the script executable
-    chmod +x final_reserv_instance_finder.sh
+# Make the script executable
+chmod +x final_reserv_instance_finder.sh
+```
 
 Ensure AWS CLI is installed and configured:
 
-    # Install AWS CLI if not already installed
-    # For macOS with Homebrew:
-    brew install awscli
+```bash
+# Install AWS CLI if not already installed
+# For macOS with Homebrew:
+brew install awscli
 
-    # For Linux (Ubuntu/Debian):
-    sudo apt-get install awscli
+# For Linux (Ubuntu/Debian):
+sudo apt-get install awscli
 
-    # Configure AWS CLI with your credentials
-    aws configure
+# Configure AWS CLI with your credentials
+aws configure
+```
 
 ### For Windows:
 
 **Option 1: Using Git Bash or WSL (Recommended)**
 
-If you have Git Bash or Windows Subsystem for Linux (WSL) installed, you can run the script directly:
+```bash
+# Clone the repository
+git clone https://github.com/NisaargPendal/Find_Reserved_instances_Mapping.git
 
-    # In Git Bash or WSL terminal
-    chmod +x final_reserv_instance_finder.sh
-    ./final_reserv_instance_finder.sh
+# Navigate to the project directory
+cd Find_Reserved_instances_Mapping
+
+# In Git Bash or WSL terminal
+chmod +x final_reserv_instance_finder.sh
+./final_reserv_instance_finder.sh
+```
 
 **Option 2: Using Windows Command Prompt with Bash**
 
@@ -69,43 +94,44 @@ While this script is written in bash, you can run it through WSL or convert the 
 
 ### Basic Usage:
 
-    # Make sure the script is executable
-    chmod +x final_reserv_instance_finder.sh
+```bash
+# Make sure the script is executable
+chmod +x final_reserv_instance_finder.sh
 
-    # Run the script
-    ./final_reserv_instance_finder.sh
+# Run the script
+./final_reserv_instance_finder.sh
+```
 
 ### Running from Different Directories:
 
-    # If script is in your current directory
-    ./final_reserv_instance_finder.sh
+```bash
+# If script is in your current directory
+./final_reserv_instance_finder.sh
 
-    # If script is in a different directory
-    /path/to/final_reserv_instance_finder.sh
+# If script is in a different directory
+/path/to/final_reserv_instance_finder.sh
 
-    # Or add to PATH and run from anywhere
-    export PATH=$PATH:/path/to/script/directory
-    final_reserv_instance_finder.sh
+# Or add to PATH and run from anywhere
+export PATH=$PATH:/path/to/script/directory
+final_reserv_instance_finder.sh
+```
 
 ## Output Explanation
 
 The script generates several sections of output to provide comprehensive Reserved Instance analysis:
 
-**Active Reserved Instances Section:**
-This section lists all active Reserved Instances with their IDs, instance types, availability zones, capacity counts, platforms, and current states.
+**Active Reserved Instances Section:** This section lists all active Reserved Instances with their IDs, instance types, availability zones, capacity counts, platforms, and current states.
 
-**Running Instances Section:**
-Shows all currently running EC2 instances with their IDs, types, availability zones, platforms, and names (if tagged).
+**Running Instances Section:** Shows all currently running EC2 instances with their IDs, types, availability zones, platforms, and names (if tagged).
 
-**Detailed Reserved Instance Mapping:**
-For each Reserved Instance, this section shows exactly which running instances are utilizing that reserved capacity, indicates utilization status (perfectly utilized, underutilized, or overutilized), and identifies any unused reserved capacity.
+**Detailed Reserved Instance Mapping:** For each Reserved Instance, this section shows exactly which running instances are utilizing that reserved capacity, indicates utilization status (perfectly utilized, underutilized, or overutilized), and identifies any unused reserved capacity.
 
-**Instances Without Reserved Coverage:**
-Lists instances that are running on On-Demand pricing and not covered by any Reserved Instance.
+**Instances Without Reserved Coverage:** Lists instances that are running on On-Demand pricing and not covered by any Reserved Instance.
 
 **Legend:**
+
 - ✅ = Instance using Reserved Instance capacity
-- ❌ = Reserved Instance not being used  
+- ❌ = Reserved Instance not being used
 - ⚠️ = Partial utilization (over/under used)
 - 💰 = Instance billed at On-Demand rates
 
@@ -115,18 +141,22 @@ Lists instances that are running on On-Demand pricing and not covered by any Res
 
 To modify the script for a different AWS region, edit the region parameter in the AWS CLI commands:
 
-    # Change this line in the script:
-    --region us-east-1
+```bash
+# Change this line in the script:
+--region us-east-1
 
-    # To your desired region, for example:
-    --region us-west-2
+# To your desired region, for example:
+--region us-west-2
+```
 
 ### Filtering by Instance Types:
 
 You can modify the script to focus on specific instance types by adding filters to the AWS CLI commands:
 
-    # Add instance type filter to the describe-instances command:
-    --filters "Name=instance-state-name,Values=running" "Name=instance-type,Values=t3.micro,t3.small"
+```bash
+# Add instance type filter to the describe-instances command:
+--filters "Name=instance-state-name,Values=running" "Name=instance-type,Values=t3.micro,t3.small"
+```
 
 ## Troubleshooting
 
@@ -134,23 +164,30 @@ You can modify the script to focus on specific instance types by adding filters 
 
 **Permission Denied Error:**
 
-    # Solution: Make the script executable
-    chmod +x final_reserv_instance_finder.sh
+```bash
+# Solution: Make the script executable
+chmod +x final_reserv_instance_finder.sh
+```
 
 **AWS CLI Not Found:**
 
-    # Solution: Install AWS CLI
-    # For macOS: brew install awscli
-    # For Linux: sudo apt-get install awscli
-    # For Windows: Download from AWS website
+```bash
+# Solution: Install AWS CLI
+# For macOS: brew install awscli
+# For Linux: sudo apt-get install awscli
+# For Windows: Download from AWS website
+```
 
 **AWS Credentials Not Configured:**
 
-    # Solution: Configure AWS CLI
-    aws configure
-    # Enter your Access Key ID, Secret Access Key, region, and output format
+```bash
+# Solution: Configure AWS CLI
+aws configure
+# Enter your Access Key ID, Secret Access Key, region, and output format
+```
 
 **No Output or Empty Results:**
+
 - Verify you're checking the correct AWS region
 - Ensure your AWS credentials have the necessary permissions
 - Check that you have Reserved Instances and running instances in the specified region
@@ -162,6 +199,7 @@ You can modify the script to focus on specific instance types by adding filters 
 - **Bash:** Version 4.0 or higher
 - **AWS Permissions:** EC2 describe permissions for instances and Reserved Instances
 - **Network:** Internet connection to access AWS APIs
+- **Git:** For cloning the repository (recommended method)
 
 ## Contributing
 
@@ -169,8 +207,10 @@ Feel free to submit issues, feature requests, or pull requests to improve this s
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+This project is licensed under the MIT License - see the `LICENSE` file for details.
 
 ## Author
 
 Created to solve Reserved Instance tracking and optimization challenges in AWS environments.
+
+**Repository:** https://github.com/NisaargPendal/Find_Reserved_instances_Mapping.git
